@@ -13,10 +13,8 @@ public class Matricula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
-
-    @Column(name = "data_matricula")
-    private LocalDate dataMatricula;
+    @Column(name = "data_inicio")
+    private LocalDate dataInicio;
 
     @Column(name = "dia_vencimento")
     private Integer diaVencimento;
@@ -39,8 +37,8 @@ public class Matricula {
     // Métodos de lifecycle
     @PrePersist
     public void prePersist() {
-        if (dataMatricula == null) {
-            dataMatricula = LocalDate.now();
+        if (dataInicio == null) {
+            dataInicio = LocalDate.now();
         }
     }
 
@@ -54,20 +52,12 @@ public class Matricula {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public LocalDate getDataInicio() {
+        return dataInicio;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public LocalDate getDataMatricula() {
-        return dataMatricula;
-    }
-
-    public void setDataMatricula(LocalDate dataMatricula) {
-        this.dataMatricula = dataMatricula;
+    public void setDataInicio(LocalDate dataInicio) {
+        this.dataInicio = dataInicio;
     }
 
     public Integer getDiaVencimento() {

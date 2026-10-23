@@ -2,6 +2,7 @@ package com.kikodev.gym_management_api.domain;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "faturas_matriculas")
@@ -16,7 +17,7 @@ public class FaturaMatricula {
     private LocalDate dataVencimento;
 
     @Column(name = "data_pagamento")
-    private LocalDate dataPagamento;
+    private LocalDateTime dataPagamento;
 
     @Column(name = "data_cancelamento")
     private LocalDate dataCancelamento;
@@ -50,11 +51,11 @@ public class FaturaMatricula {
         this.dataVencimento = dataVencimento;
     }
 
-    public LocalDate getDataPagamento() {
+    public LocalDateTime getDataPagamento() {
         return dataPagamento;
     }
 
-    public void setDataPagamento(LocalDate dataPagamento) {
+    public void setDataPagamento(LocalDateTime dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 

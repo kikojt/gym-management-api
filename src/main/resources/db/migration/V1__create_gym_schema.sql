@@ -62,7 +62,7 @@ CREATE TABLE matriculas_modalidades (
 CREATE TABLE faturas_matriculas (
     id BIGSERIAL PRIMARY KEY,
     matricula_id BIGINT NOT NULL REFERENCES matriculas(id),
-    data_vencimento TIMESTAMP,
+    data_vencimento DATE,
     valor DECIMAL(10, 2) NOT NULL CHECK ( valor >= 0),
     data_pagamento TIMESTAMP,
     data_cancelamento DATE,
