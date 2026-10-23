@@ -44,7 +44,7 @@ CREATE TABLE matriculas (
     data_inicio DATE NOT NULL DEFAULT CURRENT_DATE,
     dia_vencimento INT NOT NULL CHECK ( dia_vencimento BETWEEN 1 AND 31),
     data_fim DATE,
-    status VARCHAR(20) CHECK ( status in ('Ativa', 'Suspensa', 'Cancelada')) NOT NULL DEFAULT 'Ativa',
+    estado VARCHAR(20) CHECK ( estado in ('ATIVA', 'ENCERRADA', 'CANCELADA')) NOT NULL DEFAULT 'ATIVA',
     ativo BOOLEAN NOT NULL DEFAULT TRUE
 );
 
@@ -62,17 +62,17 @@ CREATE TABLE matriculas_modalidades (
 CREATE TABLE faturas_matriculas (
     id BIGSERIAL PRIMARY KEY,
     matricula_id BIGINT NOT NULL REFERENCES matriculas(id),
-    data_emissao DATE NOT NULL DEFAULT CURRENT_DATE,
     data_vencimento TIMESTAMP,
-    data_cancelamento DATE,
     valor DECIMAL(10, 2) NOT NULL CHECK ( valor >= 0),
-    status VARCHAR(20) CHECK ( status in ('Pendente', 'Paga', 'Cancelada', 'Vencida')) NOT NULL DEFAULT 'Pendente',
+    data_pagamento TIMESTAMP,
+    data_cancelamento DATE,
+    estado VARCHAR(20) CHECK ( estado in ('PENDENTE', 'PAGA', 'CANCELADA', 'VENCIDA')) NOT NULL DEFAULT 'PENDENTE',
     UNIQUE (matricula_id, data_vencimento)
 );
 
 CREATE TABLE assiduidade (
     id BIGSERIAL PRIMARY KEY,
     matricula_id BIGINT NOT NULL REFERENCES matriculas(id),
-    data_presenca TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    data_entrada TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     data_saida TIMESTAMP
 );
