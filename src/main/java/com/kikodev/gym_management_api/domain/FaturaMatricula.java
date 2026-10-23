@@ -1,5 +1,6 @@
 package com.kikodev.gym_management_api.domain;
 
+import com.kikodev.gym_management_api.domain.enums.EstadoFatura;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
